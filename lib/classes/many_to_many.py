@@ -62,6 +62,7 @@ class Author:
         self._name = name
         self._articles = []
 
+
     @property
     def name(self):
         return self._name
@@ -70,6 +71,7 @@ class Author:
     def name(self, value):
         # Prevent changing the name after instantiation
         pass
+
 
     def articles(self):
         return self._articles
@@ -84,6 +86,7 @@ class Author:
         if not self._articles:
             return None
         return list(set(article.magazine.category for article in self._articles))
+
 
 
 class Magazine:
@@ -105,6 +108,7 @@ class Magazine:
             self._name = value
         # If the value is not a string or not within the valid length, ignore the assignment
 
+
     @property
     def category(self):
         return self._category
@@ -114,6 +118,7 @@ class Magazine:
         if isinstance(value, str) and len(value) > 0:
             self._category = value
         # If the value is not a string or the length is zero, ignore the assignment
+
 
     def articles(self):
         return self._articles
@@ -126,6 +131,7 @@ class Magazine:
             return None
         return [article.title for article in self._articles]
 
+
     def contributing_authors(self):
         author_counts = {}
         for article in self._articles:
@@ -135,6 +141,7 @@ class Magazine:
                 author_counts[article.author] = 1
         contributing_authors = [author for author, count in author_counts.items() if count > 2]
         return contributing_authors if contributing_authors else None
+
 
     @classmethod
     def top_publisher(cls):
